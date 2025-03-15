@@ -8,5 +8,5 @@ import (
 
 type ITokenMaker[T any] interface {
 	GenerateToken(user domain.User, duration time.Duration) (string, error)
-	VerifyToken(token string) (T, error)
+	VerifyToken(token string) (*T, error)
 }
