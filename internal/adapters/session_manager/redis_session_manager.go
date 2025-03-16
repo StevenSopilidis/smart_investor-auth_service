@@ -62,7 +62,11 @@ func (m *RedisSessionManager[T]) VerifySession(sessionId string) (*T, error) {
 	val, err := m.redisClient.Get(context.Background(), sessionId).Result()
 
 	if err != nil {
-		return nil, err
+		if err == redis.Nil {
+			return nil, app_errors.NewInvalidSessionIdError(sessionId)
+		} else {
+			return nil, app_errors.NewRedisError(err)
+		}
 	}
 
 	payload, err := m.tokenMaker.VerifyToken(val)

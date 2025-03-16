@@ -11,6 +11,7 @@ type Config struct {
 	RedisPassword string        `mapstructure:"REDIS_PASSWORD"`
 	RedisDB       int           `mapstructure:"REDIS_DB"`
 	TokenDuration time.Duration `mapstructure:"TOKEN_DUDATION"`
+	SymmetricKey  string        `mapstructure:"SYMMETRIC_KEY"`
 }
 
 func LoadConfig(path string) (config Config, err error) {
