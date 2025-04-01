@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package v1_auth_service;
+
+option go_package = "github.com/smart_investor/auth_service/internal/adapters/grpc/generated";
+
+import "rpc_verify_session.proto";
+import "rpc_login.proto";
+
+service AuthGrpcService {
+    rpc Login(LoginRequest) returns (LoginResponse);
+    rpc VerifySession(VerifySessionRequest) returns (VerifySessionResponse);
+}

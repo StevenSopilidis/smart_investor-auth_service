@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package v1_auth_service;
+
+option go_package = "github.com/smart_investor/auth_service/internal/adapters/grpc/generated";
+
+message LoginRequest {
+    string Email = 1;
+    string Password = 2;
+};
+
+message LoginResponse {
+    string Session = 1;
+}
