@@ -6,19 +6,19 @@ import (
 
 	"gitlab.com/stevensopi/smart_investor/auth_service/internal/adapters/config"
 	"gitlab.com/stevensopi/smart_investor/auth_service/internal/adapters/handlers/grpc/generated"
-	"gitlab.com/stevensopi/smart_investor/auth_service/internal/adapters/session_manager"
+	"gitlab.com/stevensopi/smart_investor/auth_service/internal/adapters/token_maker"
 	"gitlab.com/stevensopi/smart_investor/auth_service/internal/core/services"
 	"google.golang.org/grpc"
 )
 
 type Server struct {
 	generated.UnimplementedAuthGrpcServiceServer
-	auth_service *services.AuthService[session_manager.SessionPayload]
+	auth_service *services.AuthService[token_maker.Claims]
 	config       config.Config
 }
 
 func NewServer(
-	auth_service *services.AuthService[session_manager.SessionPayload],
+	auth_service *services.AuthService[token_maker.Claims],
 	config config.Config,
 ) *Server {
 	return &Server{

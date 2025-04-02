@@ -7,12 +7,13 @@ import (
 )
 
 type Config struct {
-	RedisAddress  string        `mapstructure:"REDIS_ADDRESS"`
-	RedisPassword string        `mapstructure:"REDIS_PASSWORD"`
-	RedisDB       int           `mapstructure:"REDIS_DB"`
-	TokenDuration time.Duration `mapstructure:"TOKEN_DUDATION"`
-	SymmetricKey  string        `mapstructure:"SYMMETRIC_KEY"`
-	GRPCAddress   string        `mapstructure:"GRPC_SERVER_ADDRESS"`
+	RedisAddress    string        `mapstructure:"REDIS_ADDRESS"`
+	RedisPassword   string        `mapstructure:"REDIS_PASSWORD"`
+	RedisDB         int           `mapstructure:"REDIS_DB"`
+	TokenDuration   time.Duration `mapstructure:"TOKEN_DUDATION"`
+	SymmetricKey    string        `mapstructure:"SYMMETRIC_KEY"`
+	GRPCAddress     string        `mapstructure:"GRPC_SERVER_ADDRESS"`
+	UserServiceAddr string        `mapstructure:"USER_SERVICE_ADDRESS"`
 }
 
 func LoadConfig(path string) (config Config, err error) {
@@ -32,6 +33,7 @@ func LoadConfig(path string) (config Config, err error) {
 	viper.BindEnv("REDIS_DB")
 	viper.BindEnv("TOKEN_DUDATION")
 	viper.BindEnv("GRPC_SERVER_ADDRESS")
+	viper.BindEnv("USER_SERVICE_ADDRESS")
 
 	err = viper.Unmarshal(&config)
 	return config, err

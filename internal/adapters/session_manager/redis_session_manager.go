@@ -11,10 +11,6 @@ import (
 	"gitlab.com/stevensopi/smart_investor/auth_service/internal/core/ports"
 )
 
-type SessionPayload struct {
-	Email string
-}
-
 type RedisSessionManager[T any] struct {
 	redisClient *redis.Client
 	tokenMaker  ports.ITokenMaker[T]
