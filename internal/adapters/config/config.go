@@ -14,6 +14,7 @@ type Config struct {
 	SymmetricKey    string        `mapstructure:"SYMMETRIC_KEY"`
 	GRPCAddress     string        `mapstructure:"GRPC_SERVER_ADDRESS"`
 	UserServiceAddr string        `mapstructure:"USER_SERVICE_ADDRESS"`
+	Environment 	string 	      `mapstructure:"ENVIRONMENT""`
 }
 
 func LoadConfig(path string) (config Config, err error) {
@@ -34,6 +35,7 @@ func LoadConfig(path string) (config Config, err error) {
 	viper.BindEnv("TOKEN_DUDATION")
 	viper.BindEnv("GRPC_SERVER_ADDRESS")
 	viper.BindEnv("USER_SERVICE_ADDRESS")
+	viper.BindEnv("Environment")
 
 	err = viper.Unmarshal(&config)
 	return config, err
