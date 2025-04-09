@@ -7,14 +7,16 @@ import (
 )
 
 type Config struct {
-	RedisAddress    string        `mapstructure:"REDIS_ADDRESS"`
-	RedisPassword   string        `mapstructure:"REDIS_PASSWORD"`
-	RedisDB         int           `mapstructure:"REDIS_DB"`
-	TokenDuration   time.Duration `mapstructure:"TOKEN_DUDATION"`
-	SymmetricKey    string        `mapstructure:"SYMMETRIC_KEY"`
-	GRPCAddress     string        `mapstructure:"GRPC_SERVER_ADDRESS"`
-	UserServiceAddr string        `mapstructure:"USER_SERVICE_ADDRESS"`
-	Environment     string        `mapstructure:"ENVIRONMENT""`
+	RedisAddress      string        `mapstructure:"REDIS_ADDRESS"`
+	RedisPassword     string        `mapstructure:"REDIS_PASSWORD"`
+	RedisDB           int           `mapstructure:"REDIS_DB"`
+	TokenDuration     time.Duration `mapstructure:"TOKEN_DUDATION"`
+	SymmetricKey      string        `mapstructure:"SYMMETRIC_KEY"`
+	GRPCAddress       string        `mapstructure:"GRPC_SERVER_ADDRESS"`
+	UserServiceAddr   string        `mapstructure:"USER_SERVICE_ADDRESS"`
+	Environment       string        `mapstructure:"ENVIRONMENT""`
+	ServiceName       string        `mapstructure:"SERVICE_NAME"`
+	OtelCollectorAddr string        `mapstructure:"OTEL_COLLECTOR_STRUCTURE"`
 }
 
 func LoadConfig(path string) (config Config, err error) {
