@@ -39,6 +39,8 @@ func LoadConfig(path string) (config Config, err error) {
 	viper.BindEnv("USER_SERVICE_ADDRESS")
 	viper.BindEnv("SYMMETRIC_KEY")
 	viper.BindEnv("ENVIRONMENT")
+	viper.BindEnv("SERVICE_NAME")
+	viper.BindEnv("OTEL_COLLECTOR_STRUCTURE")
 
 	err = viper.Unmarshal(&config)
 	return config, err
